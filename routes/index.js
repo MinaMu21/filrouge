@@ -9,7 +9,7 @@ const router = express.Router();
 
 //GET - Récupération de l'ensemble des données de ta table
 // écoute de l'url "/api/systeme solaire"
-router.get('/', (req, res) => {
+router.get('/api/systeme', (req, res) => {
   // connection à la base de données, et sélection du systeme solaire
   connection.query('SELECT * from Systeme_solaire', (err, results) => {
     if (err) {
@@ -104,7 +104,7 @@ router.get('/api/systeme/more/:date', (req, res) => {
 
 //GET - Récupération de données ordonnées (ascendant, descendant)
 // écoute de l'url "/api/systeme solaire"
-router.get('/api/systeme/order', (req, res) => {
+router.get('/api/systeme/order/:type', (req, res) => {
   // connection à la base de données, et sélection du nombre de mission
   const type = req.query.type;
   const sql = (type === 'desc') ?
